@@ -1,0 +1,48 @@
+{
+    "the_effect":[{
+                    "id":0,
+                    "name":"low speed in rain",
+                    "precent":100,
+                    "raw_value":-5,
+                    "the_attribute":"speed",
+                    "effect_level": 2,
+                    "reason": "the_weather"
+                },
+                {
+                    "id":1,
+                    "name":"I like my motherland",
+                    "precent":110,
+                    "raw_value":0,
+                    "the_attribute":"hp",
+                    "effect_level": 1,
+                    "reason": "the_area"
+                },
+                {
+                    "id":2,
+                    "name":"I like my motherland",
+                    "precent":100,
+                    "raw_value":1,
+                    "the_attribute":"mana",
+                    "effect_level": 1,
+                    "reason": "the_area"
+                },
+                {
+                    "id":7,
+                    "name":"Enchanted Body",
+                    "precent":120,
+                    "raw_value":0,
+                    "the_attribute":"stength",
+                    "effect_level": 3,
+                    "reason": "the_race"
+                },
+                {
+                    "id":8,
+                    "name":"Enchanted Body",
+                    "precent":120,
+                    "raw_value":0,
+                    "the_attribute":"stength",
+                    "effect_level": 4,
+                    "reason": "the_union"
+                },
+                ]
+}
