@@ -32,7 +32,7 @@ create table the_attribute(id int primary key auto_increment,
     mining int,
     driving int,
     cooking int,
-    
+    weapon int
 );
 
 create table the_ex_attribute(
