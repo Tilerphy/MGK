@@ -21,7 +21,8 @@ create table the_attribute(id int primary key auto_increment,
     gold_level int,
     ap int,
     age int,
-    health int
+    health int,
+    gender int
 );
 
     --business int,
