@@ -2,10 +2,7 @@
 
 create table the_user(id int primary key auto_increment,
     name varchar(128),
-    status varchar(128),
-    the_race int,
-    the_union int,
-    the_area int
+    
 );
 
 create table the_attribute(id int primary key auto_increment,
@@ -47,7 +44,6 @@ create table the_effect(
     the_attribute_name varchar(16),
     effect_percent int,
     effect_value int,
-    
     --the_area 0
     --the_union 1
     --the_race 2
