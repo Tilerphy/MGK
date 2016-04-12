@@ -21,20 +21,19 @@ create table the_attribute(id int primary key auto_increment,
     gold_level int,
     ap int,
     age int,
-    
-    business int,
-    speech int,
-    charm int,
-    insight int,
-    health int,
-    adventure int,
-    creativity int,
-    mining int,
-    driving int,
-    cooking int,
-    weapon int
+    health int
 );
 
+    --business int,
+    --speech int,
+    --charm int,
+    --insight int,
+    --adventure int,
+    --creativity int,
+    --mining int,
+    --driving int,
+    --cooking int,
+    --weapon int
 create table the_ex_attribute(
     id int primary key auto_increment,
     name varchar(16),
