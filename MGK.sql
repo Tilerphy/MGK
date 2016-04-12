@@ -42,15 +42,19 @@ create table the_effect(
     id int primary key auto_increment,
     name varchar(128),
     the_attribute_name varchar(16),
-    percent int,
-    raw_value int,
+    effect_percent int,
+    effect_value int,
+    
+    --the_area 0
+    --the_weather 1
+    --the_race 2
+    --the_union 3
+    --the_item_effect 4
+    --the_user_status 5
+    --the_action 6
+    effect_type varchar(16),
+    effect_name varchar(128),
     effect_level int,
-    --the_skill
-    --the_weather
-    --the_race
-    --the_area
-    --the_union
-    type varchar(16),
     desciption varchar(512)
     
 );
