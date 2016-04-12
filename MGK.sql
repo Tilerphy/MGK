@@ -16,27 +16,30 @@ create table the_attribute(id int primary key auto_increment,
     hp int,
     mana int,
     crystal int,
+    crystal_level int,
+    gold int,
+    gold_level int,
     ap int,
+    age int,
     
     business int,
     speech int,
     charm int,
     insight int,
     health int,
+    adventure int,
+    creativity int,
+    mining int,
+    driving int,
+    cooking int,
     
 );
 
---create table the_object(
---    id int primary key auto_increment,
---    name varchar(128),
---    type varchar(16),
---    desciption varchar(512)
---);
-
---create table the_ex_attribute(id int primary key auto_increment,
---    name varchar(16),
---    val int
---);
+create table the_ex_attribute(
+    id int primary key auto_increment,
+    name varchar(16),
+    val int
+);
 
 create table the_effect(
     id int primary key auto_increment,
@@ -46,10 +49,10 @@ create table the_effect(
     effect_value int,
     
     --the_area 0
-    --the_weather 1
+    --the_union 1
     --the_race 2
-    --the_union 3
-    --the_item_effect 4
+    --the_item_effect 3
+    --the_weather 4
     --the_user_status 5
     --the_action 6
     effect_type varchar(16),
