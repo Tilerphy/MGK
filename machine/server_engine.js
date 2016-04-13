@@ -13,7 +13,7 @@ World_Clock.prototype.set = function(){
     var self = this;
     this.clockid = setInterval(function(){
             self.tick.call(self);
-        }, 1000);
+        }, 1000); // 1 second === 1 minute of game
     return this;
 }
 World_Clock.prototype.unset = function(){

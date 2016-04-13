@@ -5,6 +5,13 @@ create table the_user(id int primary key auto_increment,
     
 );
 
+--use to match effect_filter
+create table the_user_flag(
+    id int primary key auto_increment,
+    name varchar(128),
+    owner int
+);
+
 create table the_attribute(id int primary key auto_increment,
     stength int,
     staying int,
@@ -40,7 +47,6 @@ create table the_ex_attribute(
 
 create table the_effect(
     id int primary key auto_increment,
-    name varchar(128),
     the_attribute_name varchar(16),
     effect_percent int,
     effect_value int,
@@ -53,6 +59,9 @@ create table the_effect(
     --the_action 6
     effect_type varchar(16),
     effect_name varchar(128),
+    
+    effect_on_filter varchar(128),
+    effect_off_filter varchar(128),
     effect_level int,
     desciption varchar(512)
     
