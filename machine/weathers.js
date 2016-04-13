@@ -9,7 +9,7 @@ var weathers = {
          "rain": [
                                 {"id": id_base+1,
                                 "effect_name": "Muddy",
-                                "effect_on_filter": ["all"],
+                                "effect_on_filter": [],
                                 "effect_off_filter":[weathers.flags.ignore_rain],
                                 "the_attribute_name":"speed",
                                 "effect_level": 4,
@@ -29,7 +29,7 @@ var weathers = {
          "wind": [
                                 {"id": id_base+3,
                                 "effect_name": "Windy and Dusty",
-                                "effect_on_filter": ["all"],
+                                "effect_on_filter": [],
                                 "effect_off_filter":[weathers.flags.ignore_wind],
                                 "the_attribute_name":"speed",
                                 "effect_level": 4,
