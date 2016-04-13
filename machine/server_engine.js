@@ -6,7 +6,7 @@ function World_Clock() {
 }
 util.inherits(World_Clock, events.EventEmitter);
 World_Clock.prototype.tick = function(){
-    this.emit("tick", uuid.v4());
+    this.emit("sync", uuid.v4());
 }
 World_Clock.prototype.clockid = 0;
 World_Clock.prototype.set = function(){
@@ -34,25 +34,21 @@ var engine = {
             }
             return this;
         },
-        //world_state
-        world:{
-                state : {},
                 
-                check: function(module, tickid){
-                    this.state = module.step(tickid, this.state);
-                    return this;
-                }
-            },
+        sync: function(module, tickid){
+            module.step(tickid, this);
+        },
         //start
         start: function(){
             var self = this;
             self.clock.set();
             var self = this;
-            self.clock.on("tick", function(tickid){
+            self.clock.on("sync", function(tickid){
                     for(var key in self.loaded){
-                        self.world = self.world.check(self.loaded[key], tickid);
+                        self.sync(self.loaded[key], tickid);
                     }
                 });
+            
         }
     };
 module.exports.engine = engine;
