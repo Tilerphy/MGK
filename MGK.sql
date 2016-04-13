@@ -63,8 +63,9 @@ create table the_effect(
 );
 
 create table the_date(id int primary key auto_increment,
-    x_date varchar(128);
-    z_date varchar(128);
+    x_date varchar(128),
+    z_date varchar(128),
+    total varchar(512)
 );
 
 create table the_history(id int primary key auto_increment,
@@ -73,6 +74,8 @@ create table the_history(id int primary key auto_increment,
     poem varchar(300),
     the_user int
 );
+
+
 
 --create table the_users_actions(id int primary key auto_increment,
 --    the_place int,
