@@ -59,9 +59,11 @@ create table the_effect(
     --the_action 6
     effect_type varchar(16),
     effect_name varchar(128),
-    
     effect_on_filter varchar(128),
     effect_off_filter varchar(128),
+    -- 0 last
+    -- 1 every step
+    -- 2 once
     effect_level int,
     desciption varchar(512)
     
