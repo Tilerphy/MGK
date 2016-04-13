@@ -51,7 +51,7 @@ var weathers = {
          ],
          "sunny": [
                                 {"id": id_base+5,
-                                "effect_name": "Sunnyday",
+                                "effect_name": "Firing",
                                 "effect_on_filter": [],
                                 "effect_off_filter":[weathers.flags.ignore_sunny],
                                 "the_attribute_name":"staying",
@@ -60,7 +60,7 @@ var weathers = {
                                 "effect_value": 0,
                                 "effect_percent": 80},
                                 {"id": id_base+6,
-                                "effect_name": "Dancing in Wind",
+                                "effect_name": "Sunny Day",
                                 "effect_on_filter": [weathers.flags.sunny_buff],
                                 "effect_off_filter":[],
                                 "the_attribute_name":"stength",
