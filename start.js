@@ -10,6 +10,9 @@ app.use(bodyParser());
 app.use(cookie());
 app.use("/static", express.static("static"));
 app.use("/auth", require("./auth"));
+
+
+
 //app.use("/weixin", mid.xmlBodyParser({
 //        type:"text/xml"
 //    }));
@@ -20,8 +23,9 @@ app.set("views", __dirname+"/views");
 app.set("view cache", false);
 swig.setDefaults({cache:false});
 require("./extensions");
-var engine = require("./machine/server_engine").engine;
-engine.load(["test"]).start();
+require("./machine/global");
+
+
 //require("./json2sql");
 var http = require("http").Server(app);
 var socket = require("socket.io")(http);

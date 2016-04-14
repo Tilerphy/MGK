@@ -9,9 +9,7 @@ String.prototype.format =  function(params){
         });
 }
 
-Number.prototype.times = function(action){
-    for(var i=0; i<this; i++){
-        action(i);
-    }
+String.prototype.endWith = function (str){
+    return (this)&&((this.indexOf(str, this.length -1)) === (this.length -1));
 }
 console.log("Extensions were added.");

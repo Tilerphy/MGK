@@ -1,6 +1,7 @@
 var util = require("util");
 var events = require("events");
 var uuid = require("node-uuid");
+var fs = require("fs");
 function World_Clock() {
     events.EventEmitter.call(this);
 }
@@ -30,11 +31,23 @@ var engine = {
         //load
         load: function(args){
             for(var key in args){
-                this.loaded[this.loaded.length] = require(__dirname+"/modules/"+args[key]);
+                var modulePath =__dirname+"/modules/"+args[key];
+                this.loaded[this.loaded.length] = require(modulePath);
+                console.log("loaded module: ", modulePath);
             }
             return this;
         },
-                
+        loadDir:function(folder){
+                var files = fs.readdirSync(folder);
+                var fixFolder = folder.endWith("/") ? folder : folder + "/";
+                for(var fileIndex in files){
+                    var modulePath = fixFolder+files[fileIndex].replace(".js", "");
+                    this.loaded[this.loaded.length]
+                        = require(modulePath);
+                    console.log("loaded module: ", modulePath);
+                }
+                return this;
+            },        
         sync: function(module, tickid){
             module.step(tickid, this);
         },
@@ -48,7 +61,7 @@ var engine = {
                         self.sync(self.loaded[key], tickid);
                     }
                 });
-            
+            return this;
         }
     };
 module.exports.engine = engine;
