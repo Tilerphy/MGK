@@ -5,7 +5,7 @@ var items = {
     };
 function initItems() {
     var fs = require("fs");
-    var itemRootPath = __dirname + "/items";
+    var itemRootPath = __dirname + "/../../items";
     var files = fs.readdirSync(itemRootPath);
     for(var index in files){
         console.log("loading item: ", files[index]);
@@ -21,4 +21,5 @@ function initItems() {
     }
 }
 initItems();
-module.exports.items = items;
+mgk.items = items;
+module.exports.step = function(tickid, engine){};
