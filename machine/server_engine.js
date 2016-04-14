@@ -10,7 +10,7 @@ World_Clock.prototype.tick = function(){
     this.emit("sync", uuid.v4());
 }
 World_Clock.prototype.clockid = 0;
-World_Clock.prototype.set = function(){
+World_Clock.prototype.start = function(){
     var self = this;
     this.clockid = setInterval(function(){
             self.tick.call(self);
@@ -26,25 +26,29 @@ var engine = {
         //node name
         node_name : "basic",
         //load list
-        loaded: [],
+        loaded: {},
         //world_clock
         clock: new World_Clock(),
         //load
-        load: function(args){
-            for(var key in args){
-                var modulePath =__dirname+"/modules/"+args[key];
-                this.loaded[this.loaded.length] = require(modulePath);
-                console.log("loaded module: ", modulePath);
-            }
-            return this;
-        },
-        loadDir:function(folder){
-                var files = fs.readdirSync(folder);
-                var fixFolder = folder.endWith("/") ? folder : folder + "/";
+        //load: function(args){
+        //    for(var key in args){
+        //        var modulePath =__dirname+"/modules/"+args[key];
+        //        this.loaded[this.loaded.length] = require(modulePath);
+        //        console.log("loaded module: ", modulePath);
+        //    }
+        //    return this;
+        //},
+        load:function(folder, level){
+                var fixFolder = folder.endWith("/") ? (folder + level +"/"): (folder + "/" +level +"/");
+                var files = fs.readdirSync(fixFolder);
                 for(var fileIndex in files){
                     var modulePath = fixFolder+files[fileIndex].replace(".js", "");
-                    this.loaded[this.loaded.length]
-                        = require(modulePath);
+                    if (!this.loaded[level]) {
+                        this.loaded[level] = [];
+                    }
+                    var tmpModule   =this.loaded[level][this.loaded.length]
+                                    =require(modulePath);
+                    this.appendTask(tmpModule);
                     console.log("loaded module: ", modulePath);
                 }
                 return this;
@@ -52,6 +56,11 @@ var engine = {
         sync: function(module, tickid){
                 module.step(tickid, this); 
         },
+        start:function(){
+                var self = this;
+                self.clock.start();
+                return this;
+            },
         //prepare: function(tickid, func){
         //       if(mgk.engine.tasks){
         //            mgk.engine.tasks = {tickid:[func]};
@@ -61,14 +70,10 @@ var engine = {
         //       }
         //},
         //start
-        start: function(){
-            var self = this;
-            self.clock.set();
+        appendTask: function(module){
             var self = this;
             self.clock.on("sync", function(tickid){
-                    for(var key in self.loaded){
-                        self.sync(self.loaded[key], tickid);
-                    }
+                        self.sync(module, tickid);
                 });
             return this;
         }

@@ -1,4 +1,4 @@
 var test = function(tickid, engine){
-    console.log("TICK_ID: ", tickid);
+    console.log(mgk.date.Z_Display);
 }
 module.exports.step = test;
