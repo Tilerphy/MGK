@@ -40,18 +40,23 @@ var engine = {
         //},
         load:function(folder, level){
                 var fixFolder = folder.endWith("/") ? (folder + level +"/"): (folder + "/" +level +"/");
-                var files = fs.readdirSync(fixFolder);
-                for(var fileIndex in files){
-                    var modulePath = fixFolder+files[fileIndex].replace(".js", "");
-                    if (!this.loaded[level]) {
-                        this.loaded[level] = [];
+                if (!fs.existsSync(fixFolder)) {
+                    fs.mkdirSync(fixFolder);
+                    return this;
+                }else{
+                    var files = fs.readdirSync(fixFolder);
+                    for(var fileIndex in files){
+                        var modulePath = fixFolder+files[fileIndex].replace(".js", "");
+                        if (!this.loaded[level]) {
+                            this.loaded[level] = [];
+                        }
+                        var tmpModule   =this.loaded[level][this.loaded.length]
+                                        =require(modulePath);
+                        this.appendTask(tmpModule);
+                        console.log("loaded module: ", modulePath);
                     }
-                    var tmpModule   =this.loaded[level][this.loaded.length]
-                                    =require(modulePath);
-                    this.appendTask(tmpModule);
-                    console.log("loaded module: ", modulePath);
+                    return this;
                 }
-                return this;
             },        
         sync: function(module, tickid){
                 module.step(tickid, this); 
