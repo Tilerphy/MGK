@@ -1,19 +1,18 @@
 var id_base = 40000;
-var weathers = {
-         "flags":{
+var flags = {
            "ignore_rainy": "ignore_rainy",
            "ignore_windy": "ignore_windy",
            "rainy_buff":"rainy_buff",
            "windy_buff":"windy_buff",
            "ignore_sunny":"ignore_sunny",
            "sunny_buff":"sunny_buff"
-         },
-         "objects":{
+         };
+var weathers = {
                            "rainy": [
                                                   {"id": id_base+1,
                                                   "effect_name": "Muddy",
                                                   "effect_on_filter": [],
-                                                  "effect_off_filter":[weathers.flags.ignore_rainy],
+                                                  "effect_off_filter":[flags.ignore_rainy],
                                                   "the_attribute_name":"speed",
                                                   "effect_level": 0,
                                                   "effect_type": "the_weather",
@@ -21,7 +20,7 @@ var weathers = {
                                                   "effect_percent": 90},
                                                   {"id": id_base+2,
                                                   "effect_name": "Falling Spring",
-                                                  "effect_on_filter": [weathers.flags.rainy_buff],
+                                                  "effect_on_filter": [flags.rainy_buff],
                                                   "effect_off_filter":[],
                                                   "the_attribute_name":"mana",
                                                   "effect_level": 0,
@@ -33,7 +32,7 @@ var weathers = {
                                                   {"id": id_base+3,
                                                   "effect_name": "Windy and Dusty",
                                                   "effect_on_filter": [],
-                                                  "effect_off_filter":[weathers.flags.ignore_windy],
+                                                  "effect_off_filter":[flags.ignore_windy],
                                                   "the_attribute_name":"speed",
                                                   "effect_level": 0,
                                                   "effect_type": "the_weather",
@@ -41,7 +40,7 @@ var weathers = {
                                                   "effect_percent": 90},
                                                   {"id": id_base+4,
                                                   "effect_name": "Dancing in Wind",
-                                                  "effect_on_filter": [weathers.flags.windy_buff],
+                                                  "effect_on_filter": [flags.windy_buff],
                                                   "effect_off_filter":[],
                                                   "the_attribute_name":"speed",
                                                   "effect_level": 0,
@@ -54,7 +53,7 @@ var weathers = {
                                                   {"id": id_base+5,
                                                   "effect_name": "Firing",
                                                   "effect_on_filter": [],
-                                                  "effect_off_filter":[weathers.flags.ignore_sunny],
+                                                  "effect_off_filter":[flags.ignore_sunny],
                                                   "the_attribute_name":"staying",
                                                   "effect_level": 0,
                                                   "effect_type": "the_weather",
@@ -62,7 +61,7 @@ var weathers = {
                                                   "effect_percent": 80},
                                                   {"id": id_base+6,
                                                   "effect_name": "Sunny Day",
-                                                  "effect_on_filter": [weathers.flags.sunny_buff],
+                                                  "effect_on_filter": [flags.sunny_buff],
                                                   "effect_off_filter":[],
                                                   "the_attribute_name":"stength",
                                                   "effect_level": 0,
@@ -71,7 +70,8 @@ var weathers = {
                                                   "effect_percent": 105}
                                                   
                            ]
-         }
     };
-
-module.exports.weathers = weathers;
+mgk.weathers = weathers;
+module.exports.step = function(tickId, engine){
+         //nothing here
+}

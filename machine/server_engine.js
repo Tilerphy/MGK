@@ -21,6 +21,7 @@ World_Clock.prototype.unset = function(){
     this.clockid = clearInterval(this.clockid);
     return this;
 }
+
 var engine = {      
         //node name
         node_name : "basic",
@@ -49,8 +50,16 @@ var engine = {
                 return this;
             },        
         sync: function(module, tickid){
-            module.step(tickid, this);
+                module.step(tickid, this); 
         },
+        //prepare: function(tickid, func){
+        //       if(mgk.engine.tasks){
+        //            mgk.engine.tasks = {tickid:[func]};
+        //       }else{
+        //            var stepTasks = mgk.engine.tasks[tickid];
+        //            stepTasks[stepTasks.length]= func;
+        //       }
+        //},
         //start
         start: function(){
             var self = this;

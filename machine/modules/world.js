@@ -17,4 +17,10 @@ var world = {
                 }
             ]
     };
-module.exports = world;
+mgk.world = world;
+function update_world_areas() {
+    //code
+}
+module.exports.step = function(tickId, engine){
+         update_world_areas();
+}
